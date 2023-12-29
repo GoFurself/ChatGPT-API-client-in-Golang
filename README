@@ -1,0 +1,17 @@
+
+GoFurself Go-client for ChatGPT 3.5/4/* API
+
+Description:
+This lightweight cient interacts with the ChatGPT API. It facilitates creating, sending, and receiving messages from the ChatGPT API.
+
+Example:
+Refer to the provided code in the main.go file for an basic example.
+
+API Key:
+Ensure you replace the 'apiKey' constant with your actual API key from OpenAI.
+
+Contributing:
+Contributions to the package are welcome.
+
+License:
+MIT License.
