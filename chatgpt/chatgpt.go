@@ -52,9 +52,11 @@ func (c *ChatCompletion) AddMessage(role ChatGPTRole, content string) {
 		Content: content,
 	})
 }
+
 func (c *ChatCompletion) ClearMessages() {
 	c.request.Messages = []Message{}
 }
+
 func (c *ChatCompletion) HandleRequest() (*ChatCompletionResponse, error) {
 
 	request, err := c.jt.Marshal(c.request)

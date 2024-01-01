@@ -5,6 +5,7 @@ package chatgpt
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 )
@@ -28,6 +29,10 @@ func HTTPRequestHandler(url string, apikey string, requestModel []byte) ([]byte,
 	if err != nil {
 		return nil, err
 	}
+	if resp.StatusCode != 200 {
+		return nil, errors.New("Request failed with status code: " + resp.Status + "\nAnd body:\n" + string(body) + "\n)")
+	}
+
 	return body, nil
 }
 

@@ -5,11 +5,10 @@ package main
 import (
 	"fmt"
 	"main/chatgpt"
+	"os"
 )
 
-const (
-	apiKey = "-- API KEY HERE --"
-)
+var apiKey string = os.Getenv("OPENAI_API_KEY")
 
 func main() {
 
