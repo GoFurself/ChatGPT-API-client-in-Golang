@@ -44,11 +44,13 @@ func NewChatCompletion(
 	}
 }
 
-func (c *ChatCompletion) AddMessage(role ChatGPTRole, content string) {
+func (c *ChatCompletion) AddMessage(role ChatGPTRole, content string) error {
+	// TODO: Add validation of role and content
 	c.request.Messages = append(c.request.Messages, Message{
 		Role:    role,
 		Content: content,
 	})
+	return nil
 }
 
 func (c *ChatCompletion) ClearMessages() {
