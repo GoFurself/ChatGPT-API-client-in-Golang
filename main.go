@@ -29,6 +29,6 @@ func main() {
 		return
 	}
 
-	// Do something with response
+	// Do something with the response
 	fmt.Println(response.Choices[0].Message.Content)
 }
