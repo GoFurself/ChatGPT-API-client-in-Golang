@@ -4,12 +4,7 @@ package chatgpt
 
 const (
 	endpoint = "https://api.openai.com/v1/chat/completions"
-)
 
-type ChatModel string
-type ChatGPTRole string
-
-const (
 	ModelGPT4       ChatModel = "gpt-4"
 	ModelGPT35Turbo ChatModel = "gpt-3.5-turbo"
 	// TODO: Add more models
@@ -18,6 +13,9 @@ const (
 	ChatGPTRoleSystem    ChatGPTRole = "system"
 	ChatGPTRoleAssistant ChatGPTRole = "assistant"
 )
+
+type ChatModel string
+type ChatGPTRole string
 
 // * ChatCompletion *//
 type ChatCompletion struct {

@@ -25,7 +25,7 @@ func main() {
 
 	response, err := cc.HandleRequest()
 	if err != nil {
-		fmt.Println("Could not handle request:", err)
+		fmt.Println("Chatgpt return a error:", err)
 		return
 	}
 

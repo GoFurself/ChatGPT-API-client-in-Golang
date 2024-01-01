@@ -8,20 +8,25 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"time"
 )
 
 func HTTPRequestHandler(url string, apikey string, requestModel []byte) ([]byte, error) {
 
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestModel))
 	if err != nil {
-		// * Most likely a configuration error, thus panic.
-		panic(err)
+		// * Most likely a configuration error; however we let the caller handle this.
+		return nil, err
 	}
 
 	req.Header.Set("Authorization", "Bearer "+apikey)
 	req.Header.Set("Content-Type", "application/json")
 
-	resp, err := (&http.Client{}).Do(req)
+	client := &http.Client{
+		Timeout: time.Second * 5,
+	}
+
+	resp, err := (client).Do(req)
 	if err != nil {
 		//* We assume network:ish error, and that the request was not successful.
 		return nil, err
@@ -30,8 +35,7 @@ func HTTPRequestHandler(url string, apikey string, requestModel []byte) ([]byte,
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		// * The request was successful, but the response body could not be read.
-		// * Thus Panic seems to be the only way to handle this..
+		// * The request was successful, but the response body could not be read; however we let the caller handle this.
 		return nil, err
 	}
 	if resp.StatusCode != 200 {
@@ -47,5 +51,6 @@ func (jt *JsonMarshalHandler) Marshal(v interface{}) ([]byte, error) {
 	return json.Marshal(v)
 }
 func (jt *JsonMarshalHandler) Unmarshal(data []byte, v interface{}) error {
+
 	return json.Unmarshal(data, v)
 }
