@@ -8,7 +8,6 @@ import (
 	"errors"
 	"io"
 	"net/http"
-	"time"
 )
 
 func HTTPRequestHandler(url string, apikey string, requestModel []byte) ([]byte, error) {
@@ -22,9 +21,9 @@ func HTTPRequestHandler(url string, apikey string, requestModel []byte) ([]byte,
 	req.Header.Set("Authorization", "Bearer "+apikey)
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{
-		Timeout: time.Second * 5,
-	}
+	client := &http.Client{}
+	//	Timeout: time.Second * 15,
+	//}
 
 	resp, err := (client).Do(req)
 	if err != nil {

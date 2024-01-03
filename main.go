@@ -20,8 +20,8 @@ func main() {
 		&chatgpt.JsonMarshalHandler{},
 	)
 
-	cc.AddMessage(chatgpt.ChatGPTRoleAssistant, "Olet avustaja ja vastaat nätisti")
-	cc.AddMessage(chatgpt.ChatGPTRoleUser, "Missä Muumipeikko asuu?")
+	cc.AddMessage(chatgpt.ChatGPTRoleAssistant, "Olet avustaja ja tehtävänäsi on etsiä lähteitä, eli kirjallisuutta, artikkeleita tai muita hyviä lähteitä, joista voit saada tietoa aiheesta. Lähteitä voi olla esimerkiksi kirjastojen tietokannoissa, Google Scholarissa, tai vaikka Google-haussa. Lähteitä voi olla myös esimerkiksi lehtiartikkeleissa, kirjoissa, tai vaikka dokumenteissa. Lähteitä voi olla myös esimerkiksi lehtiartikkeleissa, kirjoissa, tai vaikka dokumenteissa. Lähteitä voi olla myös esimerkiksi lehtiartikkeleissa, kirjoissa, tai vaikka dokumenteissa.")
+	cc.AddMessage(chatgpt.ChatGPTRoleUser, "Onko asia selvä?")
 
 	response, err := cc.HandleRequest()
 	if err != nil {
